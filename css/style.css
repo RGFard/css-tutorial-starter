@@ -1,0 +1,241 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/* This is a universal selector that applies the css in the block to each element on the page. */
+* {
+  /* These 3 lines reset all margins and paddings on the page.
+    It basically allows to start clean. */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  padding: 30px;
+}
+
+.header {
+  /* This means 95% of view port. */
+  height: 95vh;
+
+  /* linear-gradient should stay in the right of url() if we want to have it at the top of the image */
+  /* 0.8 set the clearness (opacity) of the color */
+  background-image: linear-gradient(
+      to right bottom,
+
+      /* In the color pallete, click at the top panel to change from hexadecimal to rgba */
+        rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 133, 0.8)
+    ),
+    url(../img/hero.jpg);
+
+  /* Cover makes background fits to view port */
+  background-size: cover;
+
+  /* In window resizing, image always stays at the top. */
+  background-position: top;
+
+  position: relative;
+
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+
+  /* Triangle */
+  /* clip-path: polygon(50% 0, 100% 100%, 0 100%); */
+
+  /*  Got to https://bennettfeely.com/clippy/ for more polygon*/
+}
+
+.logo-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.logo {
+  height: 35px;
+}
+
+/* text-box is placed relatively to its parent's position (header) in the center based on the given properties. 
+The parent (header) must be relative. */
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+
+  /* This fixes the last shake of animation when it jumps up. */
+  backface-visibility: hidden;
+
+  margin-bottom: 60px;
+}
+
+/* block element occupies the entire width with line breaks before and after them. */
+.heading-primary-main {
+  display: block;
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+
+  animation-name: moveInLeft;
+
+  /* Total time that animation takes to run */
+  animation-duration: 1s;
+
+  /* ease-in faster at the end vs ease-out slower at the end */
+  animation-timing-function: ease-out;
+
+  /* The duration of animation delays before it starts  */
+  /* animation-delay: 3s; */
+
+  /* This repeats animation three times */
+  /* animation-iteration-count: 3; */
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+
+  animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+
+    /* This is for the moment animation appears on the page */
+    transform: translateX(-200px) rotate(180deg);
+  }
+  60% {
+    transform: rotate(180deg);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+
+    /* This is for the moment animation appears on the page */
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+
+    /* This is for the moment animation appears on the page */
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+
+  /* 15px: top-bottom and 40px: right-left */
+  padding: 15px 40px;
+  display: inline-block;
+
+  /* Rounds corners */
+  border-radius: 100px;
+
+  /* transition works between two animated states to ease down the process.
+  In this case 0.2 seconds takes time to ease down transition between .btn:hover and .btn:active */
+  transition: all 0.2s;
+
+  position: relative;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+
+  /* 0: offset for X direction. In this case we don't want our shadow to lean on X direction.
+  5px: offset for Y direction.
+  10px: the bluriness.
+  Color along with transparency value called opacity or clearness: 0.2 */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+/* Psudo element "after" adds effects after the fact. In this case .btn:visited */
+.btn::after {
+  /* content and display are mandatory. */
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+
+  /* position of the effects should be behind the picture */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  transition: all 0.4s;
+}
+
+.btn-white::after {
+  background-color: white;
+}
+
+.btn:hover::after {
+  transform: scale(1.5);
+
+  /* Fading out; sets something to invisible. */
+  opacity: 0;
+}
+
+.btn-animated {
+  /* name-duration-function-delay */
+  animation: moveInBottom 1s ease-out 0.75s;
+
+  /* Initialize animation before it starts. */
+  animation-fill-mode: backwards;
+}
