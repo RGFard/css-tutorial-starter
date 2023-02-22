@@ -70,7 +70,7 @@ body {
   /*  Got to https://bennettfeely.com/clippy/ for more polygon*/
 }
 
-.logo-box {
+.header__logo-box {
   position: absolute;
 
   /* Size inherits from parent font size of 10px in html tag. */
@@ -80,7 +80,7 @@ body {
   left: 4rem;
 }
 
-.logo {
+.header__logo {
   /* Size inherits from parent font size of 10px in html tag. */
   /* height: 35px; */
   height: 3.5rem;
@@ -88,7 +88,7 @@ body {
 
 /* text-box is placed relatively to its parent's position (header) in the center based on the given properties. 
 The parent (header) must be relative. */
-.text-box {
+.header__text-box {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -109,7 +109,7 @@ The parent (header) must be relative. */
 }
 
 /* block element occupies the entire width with line breaks before and after them. */
-.heading-primary-main {
+.heading-primary--main {
   display: block;
 
   /* Size inherits from parent font size of 10px in html tag. */
@@ -134,7 +134,7 @@ The parent (header) must be relative. */
   /* animation-iteration-count: 3; */
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
   display: block;
   /* font-size: 20px; */
   font-size: 2rem;
@@ -240,7 +240,7 @@ The parent (header) must be relative. */
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
-.btn-white {
+.btn--white {
   background-color: #fff;
   color: #777;
 }
@@ -264,7 +264,7 @@ The parent (header) must be relative. */
   transition: all 0.4s;
 }
 
-.btn-white::after {
+.btn--white::after {
   background-color: white;
 }
 
@@ -275,7 +275,7 @@ The parent (header) must be relative. */
   opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
   /* name-duration-function-delay */
   animation: moveInBottom 1s ease-out 0.75s;
 
