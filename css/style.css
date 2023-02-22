@@ -8,21 +8,35 @@ Dark green: #28b485
 */
 
 /* This is a universal selector that applies the css in the block to each element on the page. */
-* {
+*,
+*::after,
+*::before {
   /* These 3 lines reset all margins and paddings on the page.
     It basically allows to start clean. */
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: inherit;
+}
+
+html {
+  /* Font size on browser is 16px by default. 
+    In order not to use px we can put a percentage of what we want devided by 16 which is 10/16=.625=62.5% */
+  /* font-size: 10px; */
+  font-size: 62.5%;
 }
 
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  /* font-size: 16px; */
   line-height: 1.7;
   color: #777;
-  padding: 30px;
+
+  /* Padding inherits from parent font size of 10px in html tag. */
+  /* padding: 30px; */
+  padding: 3rem;
+
+  box-sizing: border-box;
 }
 
 .header {
@@ -58,12 +72,18 @@ body {
 
 .logo-box {
   position: absolute;
-  top: 40px;
-  left: 40px;
+
+  /* Size inherits from parent font size of 10px in html tag. */
+  /* top: 40px;
+  left: 40px; */
+  top: 4rem;
+  left: 4rem;
 }
 
 .logo {
-  height: 35px;
+  /* Size inherits from parent font size of 10px in html tag. */
+  /* height: 35px; */
+  height: 3.5rem;
 }
 
 /* text-box is placed relatively to its parent's position (header) in the center based on the given properties. 
@@ -83,15 +103,21 @@ The parent (header) must be relative. */
   /* This fixes the last shake of animation when it jumps up. */
   backface-visibility: hidden;
 
-  margin-bottom: 60px;
+  /* Size inherits from parent font size of 10px in html tag. */
+  /* margin-bottom: 60px; */
+  margin-bottom: 6rem;
 }
 
 /* block element occupies the entire width with line breaks before and after them. */
 .heading-primary-main {
   display: block;
-  font-size: 60px;
+
+  /* Size inherits from parent font size of 10px in html tag. */
+  /* font-size: 60px; */
+  font-size: 6rem;
   font-weight: 400;
-  letter-spacing: 35px;
+  /* letter-spacing: 35px; */
+  letter-spacing: 3.5rem;
 
   animation-name: moveInLeft;
 
@@ -110,9 +136,11 @@ The parent (header) must be relative. */
 
 .heading-primary-sub {
   display: block;
-  font-size: 20px;
+  /* font-size: 20px; */
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: 17.4px;
+  /* letter-spacing: 17.4px; */
+  letter-spacing: 1.7rem;
 
   animation: moveInRight 1s ease-out;
 }
@@ -122,13 +150,15 @@ The parent (header) must be relative. */
     opacity: 0;
 
     /* This is for the moment animation appears on the page */
-    transform: translateX(-200px) rotate(180deg);
+    /* transform: translateX(-100px) rotate(180deg); */
+    transform: translateX(-10rem) rotate(180deg);
   }
   60% {
     transform: rotate(180deg);
   }
   80% {
-    transform: translateX(10px);
+    /* transform: translateX(10px); */
+    transform: translateX(1rem);
   }
   100% {
     opacity: 1;
@@ -141,10 +171,12 @@ The parent (header) must be relative. */
     opacity: 0;
 
     /* This is for the moment animation appears on the page */
-    transform: translateX(100px);
+    /* transform: translateX(100px); */
+    transform: translateX(10rem);
   }
   80% {
-    transform: translateX(-10px);
+    /* transform: translateX(-10px); */
+    transform: translateX(-1rem);
   }
   100% {
     opacity: 1;
@@ -157,7 +189,8 @@ The parent (header) must be relative. */
     opacity: 0;
 
     /* This is for the moment animation appears on the page */
-    transform: translateY(100px);
+    /* transform: translateY(100px); */
+    transform: translateY(10rem);
   }
   100% {
     opacity: 1;
@@ -171,31 +204,40 @@ The parent (header) must be relative. */
   text-decoration: none;
 
   /* 15px: top-bottom and 40px: right-left */
-  padding: 15px 40px;
+  /* padding: 15px 40px; */
+  padding: 1.5rem 4rem;
   display: inline-block;
 
   /* Rounds corners */
-  border-radius: 100px;
+  /* border-radius: 100px; */
+  border-radius: 10rem;
 
   /* transition works between two animated states to ease down the process.
   In this case 0.2 seconds takes time to ease down transition between .btn:hover and .btn:active */
   transition: all 0.2s;
 
   position: relative;
+  font-size: 1.6rem;
 }
 
 .btn:hover {
-  transform: translateY(-3px);
+  /* transform: translateY(-3px); */
+  transform: translateY(-0.3rem);
+
+  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 .btn:active {
-  transform: translateY(-1px);
+  /* transform: translateY(-1px); */
+  transform: translateY(-0.1rem);
 
   /* 0: offset for X direction. In this case we don't want our shadow to lean on X direction.
   5px: offset for Y direction.
   10px: the bluriness.
   Color along with transparency value called opacity or clearness: 0.2 */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
 }
 
 .btn-white {
@@ -210,7 +252,8 @@ The parent (header) must be relative. */
   display: inline-block;
   height: 100%;
   width: 100%;
-  border-radius: 100px;
+  /* border-radius: 100px; */
+  border-radius: 10rem;
 
   /* position of the effects should be behind the picture */
   position: absolute;
