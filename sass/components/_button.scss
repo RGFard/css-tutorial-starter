@@ -1,0 +1,110 @@
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+
+    /* 15px: top-bottom and 40px: right-left */
+    /* padding: 15px 40px; */
+    padding: 1.5rem 4rem;
+    display: inline-block;
+
+    /* Rounds corners */
+    /* border-radius: 100px; */
+    border-radius: 10rem;
+
+    /* transition works between two animated states to ease down the process.
+  In this case 0.2 seconds takes time to ease down transition between .btn:hover and .btn:active */
+    transition: all 0.2s;
+
+    position: relative;
+    font-size: $default-font-size;
+  }
+
+  &:hover {
+    /* transform: translateY(-3px); */
+    transform: translateY(-0.3rem);
+
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+
+    &::after {
+      transform: scale(1.5);
+
+      /* Fading out; sets something to invisible. */
+      opacity: 0;
+    }
+  }
+
+  &:active {
+    /* transform: translateY(-1px); */
+    transform: translateY(-0.1rem);
+
+    /* 0: offset for X direction. In this case we don't want our shadow to lean on X direction.
+  5px: offset for Y direction.
+  10px: the bluriness.
+  Color along with transparency value called opacity or clearness: 0.2 */
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-gray-dark;
+
+    &::after {
+      background-color: white;
+    }
+  }
+
+  /* Psudo element "after" adds effects after the fact. In this case .btn:visited */
+  &::after {
+    /* content and display are mandatory. */
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    /* border-radius: 100px; */
+    border-radius: 10rem;
+
+    /* position of the effects should be behind the picture */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    /* name-duration-function-delay */
+    animation: moveInBottom 1s ease-out 0.75s;
+
+    /* Initialize animation before it starts. */
+    animation-fill-mode: backwards;
+  }
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+    transform: translateY(0);
+  }
+}

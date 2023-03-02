@@ -1,11 +1,40 @@
-/*
-COLORS:
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    /* This is for the moment animation appears on the page */
+    /* transform: translateX(-100px) rotate(180deg); */
+    transform: translateX(-10rem) rotate(180deg); }
+  60% {
+    transform: rotate(180deg); }
+  80% {
+    /* transform: translateX(10px); */
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    /* This is for the moment animation appears on the page */
+    /* transform: translateX(100px); */
+    transform: translateX(10rem); }
+  80% {
+    /* transform: translateX(-10px); */
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
-*/
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    /* This is for the moment animation appears on the page */
+    /* transform: translateY(100px); */
+    transform: translateY(10rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
 
 /* This is a universal selector that applies the css in the block to each element on the page. */
 *,
@@ -15,15 +44,17 @@ Dark green: #28b485
     It basically allows to start clean. */
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 html {
   /* Font size on browser is 16px by default. 
+    This defines what 1 rem is.
     In order not to use px we can put a percentage of what we want devided by 16 which is 10/16=.625=62.5% */
   /* font-size: 10px; */
-  font-size: 62.5%;
-}
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
 
 body {
   font-family: "Lato", sans-serif;
@@ -31,254 +62,275 @@ body {
   /* font-size: 16px; */
   line-height: 1.7;
   color: #777;
-
   /* Padding inherits from parent font size of 10px in html tag. */
   /* padding: 30px; */
-  padding: 3rem;
-
-  box-sizing: border-box;
-}
-
-.header {
-  /* This means 95% of view port. */
-  height: 95vh;
-
-  /* linear-gradient should stay in the right of url() if we want to have it at the top of the image */
-  /* 0.8 set the clearness (opacity) of the color */
-  background-image: linear-gradient(
-      to right bottom,
-
-      /* In the color pallete, click at the top panel to change from hexadecimal to rgba */
-        rgba(126, 213, 111, 0.8),
-      rgba(40, 180, 133, 0.8)
-    ),
-    url(../img/hero.jpg);
-
-  /* Cover makes background fits to view port */
-  background-size: cover;
-
-  /* In window resizing, image always stays at the top. */
-  background-position: top;
-
-  position: relative;
-
-  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-
-  /* Triangle */
-  /* clip-path: polygon(50% 0, 100% 100%, 0 100%); */
-
-  /*  Got to https://bennettfeely.com/clippy/ for more polygon*/
-}
-
-.header__logo-box {
-  position: absolute;
-
-  /* Size inherits from parent font size of 10px in html tag. */
-  /* top: 40px;
-  left: 40px; */
-  top: 4rem;
-  left: 4rem;
-}
-
-.header__logo {
-  /* Size inherits from parent font size of 10px in html tag. */
-  /* height: 35px; */
-  height: 3.5rem;
-}
-
-/* text-box is placed relatively to its parent's position (header) in the center based on the given properties. 
-The parent (header) must be relative. */
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
+  padding: 3rem; }
 
 .heading-primary {
   color: #fff;
   text-transform: uppercase;
-
   /* This fixes the last shake of animation when it jumps up. */
   backface-visibility: hidden;
-
   /* Size inherits from parent font size of 10px in html tag. */
   /* margin-bottom: 60px; */
   margin-bottom: 6rem;
-}
+  /* block element occupies the entire width with line breaks before and after them. */ }
+  .heading-primary--main {
+    display: block;
+    /* Size inherits from parent font size of 10px in html tag. */
+    /* font-size: 60px; */
+    font-size: 6rem;
+    font-weight: 400;
+    /* letter-spacing: 35px; */
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    /* Total time that animation takes to run */
+    animation-duration: 1s;
+    /* ease-in faster at the end vs ease-out slower at the end */
+    animation-timing-function: ease-out;
+    /* The duration of animation delays before it starts  */
+    /* animation-delay: 3s; */
+    /* This repeats animation three times */
+    /* animation-iteration-count: 3; */ }
+  .heading-primary--sub {
+    display: block;
+    /* font-size: 20px; */
+    font-size: 2rem;
+    font-weight: 700;
+    /* letter-spacing: 17.4px; */
+    letter-spacing: 1.7rem;
+    animation: moveInRight 1s ease-out; }
 
-/* block element occupies the entire width with line breaks before and after them. */
-.heading-primary--main {
-  display: block;
-
-  /* Size inherits from parent font size of 10px in html tag. */
-  /* font-size: 60px; */
-  font-size: 6rem;
-  font-weight: 400;
-  /* letter-spacing: 35px; */
-  letter-spacing: 3.5rem;
-
-  animation-name: moveInLeft;
-
-  /* Total time that animation takes to run */
-  animation-duration: 1s;
-
-  /* ease-in faster at the end vs ease-out slower at the end */
-  animation-timing-function: ease-out;
-
-  /* The duration of animation delays before it starts  */
-  /* animation-delay: 3s; */
-
-  /* This repeats animation three times */
-  /* animation-iteration-count: 3; */
-}
-
-.heading-primary--sub {
-  display: block;
-  /* font-size: 20px; */
-  font-size: 2rem;
-  font-weight: 700;
-  /* letter-spacing: 17.4px; */
-  letter-spacing: 1.7rem;
-
-  animation: moveInRight 1s ease-out;
-}
-
-@keyframes moveInLeft {
-  0% {
-    opacity: 0;
-
-    /* This is for the moment animation appears on the page */
-    /* transform: translateX(-100px) rotate(180deg); */
-    transform: translateX(-10rem) rotate(180deg);
-  }
-  60% {
-    transform: rotate(180deg);
-  }
-  80% {
-    /* transform: translateX(10px); */
-    transform: translateX(1rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(0);
-  }
-}
-
-@keyframes moveInRight {
-  0% {
-    opacity: 0;
-
-    /* This is for the moment animation appears on the page */
-    /* transform: translateX(100px); */
-    transform: translateX(10rem);
-  }
-  80% {
-    /* transform: translateX(-10px); */
-    transform: translateX(-1rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(0);
-  }
-}
-
-@keyframes moveInBottom {
-  0% {
-    opacity: 0;
-
-    /* This is for the moment animation appears on the page */
-    /* transform: translateY(100px); */
-    transform: translateY(10rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(0);
-  }
-}
-
-.btn:link,
-.btn:visited {
+.heading-secondary {
+  font-size: 3.5rem;
   text-transform: uppercase;
-  text-decoration: none;
-
-  /* 15px: top-bottom and 40px: right-left */
-  /* padding: 15px 40px; */
-  padding: 1.5rem 4rem;
+  font-weight: 700;
   display: inline-block;
+  background-image: linear-gradient(to right, #7ed56f, #28b485);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+  transition: all 0.2s; }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.2);
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.6); }
 
-  /* Rounds corners */
-  /* border-radius: 100px; */
-  border-radius: 10rem;
-
-  /* transition works between two animated states to ease down the process.
-  In this case 0.2 seconds takes time to ease down transition between .btn:hover and .btn:active */
-  transition: all 0.2s;
-
-  position: relative;
+.heading-tertiary {
   font-size: 1.6rem;
-}
+  font-weight: 700;
+  text-transform: uppercase; }
 
-.btn:hover {
-  /* transform: translateY(-3px); */
-  transform: translateY(-0.3rem);
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
 
-  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); */
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-}
+.u-center-text {
+  text-align: center; }
 
-.btn:active {
-  /* transform: translateY(-1px); */
-  transform: translateY(-0.1rem);
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
 
-  /* 0: offset for X direction. In this case we don't want our shadow to lean on X direction.
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
+.composition {
+  position: relative; }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    position: absolute;
+    transition: all 0.2s;
+    outline-offset: 2rem; }
+    .composition__photo--p1 {
+      left: 0;
+      top: -2rem; }
+    .composition__photo--p2 {
+      right: 0;
+      top: 2rem; }
+    .composition__photo--p3 {
+      left: 20%;
+      top: 10rem; }
+    .composition__photo:hover {
+      outline: 1.5rem solid #55c57a;
+      transform: scale(1.05) translateY(-0.5rem);
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      z-index: 20; }
+  .composition:hover .composition__photo:not(:hover) {
+    transform: scale(0.95); }
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1.5rem;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s; }
+  .feature-box__icon {
+    font-size: 6rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    background-image: linear-gradient(to right, #7ed56f, #28b485);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent; }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale(1.03); }
+
+.btn {
+  /* Psudo element "after" adds effects after the fact. In this case .btn:visited */ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    /* 15px: top-bottom and 40px: right-left */
+    /* padding: 15px 40px; */
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    /* Rounds corners */
+    /* border-radius: 100px; */
+    border-radius: 10rem;
+    /* transition works between two animated states to ease down the process.
+  In this case 0.2 seconds takes time to ease down transition between .btn:hover and .btn:active */
+    transition: all 0.2s;
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    /* transform: translateY(-3px); */
+    transform: translateY(-0.3rem);
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scale(1.5);
+      /* Fading out; sets something to invisible. */
+      opacity: 0; }
+  .btn:active {
+    /* transform: translateY(-1px); */
+    transform: translateY(-0.1rem);
+    /* 0: offset for X direction. In this case we don't want our shadow to lean on X direction.
   5px: offset for Y direction.
   10px: the bluriness.
   Color along with transparency value called opacity or clearness: 0.2 */
-  /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); */
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-}
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: white; }
+  .btn::after {
+    /* content and display are mandatory. */
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    /* border-radius: 100px; */
+    border-radius: 10rem;
+    /* position of the effects should be behind the picture */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s; }
+  .btn--animated {
+    /* name-duration-function-delay */
+    animation: moveInBottom 1s ease-out 0.75s;
+    /* Initialize animation before it starts. */
+    animation-fill-mode: backwards; }
 
-.btn--white {
-  background-color: #fff;
-  color: #777;
-}
-
-/* Psudo element "after" adds effects after the fact. In this case .btn:visited */
-.btn::after {
-  /* content and display are mandatory. */
-  content: "";
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #55c57a;
   display: inline-block;
-  height: 100%;
-  width: 100%;
-  /* border-radius: 100px; */
-  border-radius: 10rem;
+  text-decoration: none;
+  border-bottom: 1px solid #55c57a;
+  padding: 3px; }
 
-  /* position of the effects should be behind the picture */
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+.btn-text:hover {
+  background-color: #55c57a;
+  color: #fff;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); }
 
-  transition: all 0.4s;
-}
+.btn-text:active {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  transform: translateY(0); }
 
-.btn--white::after {
-  background-color: white;
-}
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc( 2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc( 2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc( 3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
 
-.btn:hover::after {
-  transform: scale(1.5);
+.header {
+  /* This means 95% of view port. */
+  height: 95vh;
+  /* linear-gradient should stay in the right of url() if we want to have it at the top of the image */
+  /* 0.8 set the clearness (opacity) of the color */
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  /* Cover makes background fits to view port */
+  background-size: cover;
+  /* In window resizing, image always stays at the top. */
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  /* Triangle */
+  /* clip-path: polygon(50% 0, 100% 100%, 0 100%); */
+  /*  Got to https://bennettfeely.com/clippy/ for more polygon*/
+  /* text-box is placed relatively to its parent's position (header) in the center based on the given properties. 
+The parent (header) must be relative. */ }
+  .header__logo-box {
+    position: absolute;
+    /* Size inherits from parent font size of 10px in html tag. */
+    /* top: 40px;
+  left: 40px; */
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    /* Size inherits from parent font size of 10px in html tag. */
+    /* height: 35px; */
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
 
-  /* Fading out; sets something to invisible. */
-  opacity: 0;
-}
+.section-about {
+  background-color: #f7f7f7;
+  padding: 35rem 0;
+  margin-top: -25vh; }
 
-.btn--animated {
-  /* name-duration-function-delay */
-  animation: moveInBottom 1s ease-out 0.75s;
-
-  /* Initialize animation before it starts. */
-  animation-fill-mode: backwards;
-}
+.section-features {
+  padding: 20rem 0;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/nat-4.jpg);
+  background-size: cover;
+  transform: skewY(-7deg);
+  margin-top: -10rem; }
+  .section-features > * {
+    transform: skewY(7deg); }
