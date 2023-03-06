@@ -1,22 +1,16 @@
-/* This is a universal selector that applies the css in the block to each element on the page. */
 *,
 *::after,
 *::before {
-  /* These 3 lines reset all margins and paddings on the page.
-    It basically allows to start clean. */
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
 }
 
 html {
-  /* Font size on browser is 16px by default. 
-    This defines what 1 rem is.
-    In order not to use px we can put a percentage of what we want devided by 16 which is 10/16=.625=62.5% */
-  /* font-size: 10px; */
-  font-size: 62.5%;
+    // This defines what 1rem is
+    font-size: 62.5%;
 }
 
 body {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
