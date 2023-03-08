@@ -67,3 +67,7 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+css/style.comp.css
+css/style.concat.css
+css/style.prefix.css
